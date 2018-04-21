@@ -44,10 +44,12 @@ game_turn(Request, Response) :-
     pengine_self(PengineID),
     current_process(PengineID, _PID, STDIN, STDOUT),
     format(STDIN, 'C 4,4\n', []),
-    read_line_to_codes(STDOUT, X),
-    debug(ld(turn), 'rawout ~s', [X]),
- %   read_term(STDOUT, Term, []),
-%    debug(ld(turn), 'resp ~q', [Term]),
+    flush_output(STDIN),
+    sleep(1),
+%    read_line_to_codes(STDOUT, X),
+%    debug(ld(turn), 'rawout ~s', [X]),
+    read_term(STDOUT, Term, []),
+    debug(ld(turn), 'resp ~q', [Term]),
     Response = 'AHEAD OF YOU IS A PARTICULARLY MUDDY PATCH'.
 
 sandbox:safe_primitive(game_interact:game_turn(_, _)).
