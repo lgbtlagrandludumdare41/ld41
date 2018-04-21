@@ -37,6 +37,7 @@ This forks a process, and remembers info about the process in the pengine's modu
    * F - plant a flag here
    * ? - plant a question mark here
    * X - remove flags or question marks from here
+   * X - remove flags or question marks from here
    
    The special commands are
    
@@ -79,7 +80,7 @@ Note the periods and lowercase.
 
 For D, the response is
 
-   debug(`##########`, `xxxxxxxxxxxxxxxxx`).\n
+   debug(\`##########\`, \`xxxxxxxxxxxxxxxxx\`).\n
    
 note that those are back ticks.
 
