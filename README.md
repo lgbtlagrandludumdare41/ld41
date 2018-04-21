@@ -7,7 +7,7 @@ This is our entry for Ludum Dare 41,  a silly text based minesweeper game.
 
 ## Code Organization
 
-Code is organized by language - C++ code in cpp,
+Code is organized by language - Java code in java,
 SWI-Prolog code in prolog
 
 ## Architecture
