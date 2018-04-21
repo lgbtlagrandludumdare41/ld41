@@ -26,9 +26,9 @@ public class Minesweeper
 	public static final String CMD_QUESTION = "?";
 	public static final String CMD_REMOVE = "x";
 	
-	public static final String RESULT_INVALID = "invalid.\n";
-	public static final String RESULT_WIN = "win.\n";
-	public static final String RESULT_LOSE = "bomb.\n";
+	public static final String RESULT_INVALID = "invalid.";
+	public static final String RESULT_WIN = "win.";
+	public static final String RESULT_LOSE = "bomb.";
     
     private char[][] _fullBoard;
     private char[][] _userBoard;
@@ -407,7 +407,7 @@ public class Minesweeper
 			}
 		}
 		
-		s += "]).\n";
+		s += "]).";
 		return s;
 	}
 	
