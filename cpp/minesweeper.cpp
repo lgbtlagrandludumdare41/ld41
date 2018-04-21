@@ -60,24 +60,33 @@ std::string Minesweeper::processCommand(std::string command, std::string values)
 	else
 	{
 		int next = values.find_first_of(",", 0);
+		std::cout << next << std::endl;
 		int x = std::stoi(values.substr(0, next));
-		int y = std::stoi(values.substr(next + 1, command.length()));
+		int y = std::stoi(values.substr(next + 1, values.length()));
+		std::cout << x << " " << y << std::endl;
 
 		std::string result;
-		std::cout << "Command is " << command << ".\n";
-		if (command.compare("C") == 0 || command.compare("c") == 0)
+		if (x > 0 && x < _width && y > 0 && y < _height)
 		{
-			result = peek(x, y);
-		}
-		else if (command.compare("F") == 0 || command.compare("f") == 0)
-		{
-			_userBoard[x][y] = SPACE_FLAG;
-			result = peek(x, y);
-		}
-		else if (command.compare("Q") == 0 || command.compare("q") == 0)
-		{
-			_userBoard[x][y] = SPACE_QUESTION;
-			result = peek(x, y);
+			std::cout << "Command is " << command << ".\n";
+			if (command.compare("C") == 0 || command.compare("c") == 0)
+			{
+				result = peek(x, y);
+			}
+			else if (command.compare("F") == 0 || command.compare("f") == 0)
+			{
+				_userBoard[x][y] = SPACE_FLAG;
+				result = peek(x, y);
+			}
+			else if (command.compare("?") == 0)
+			{
+				_userBoard[x][y] = SPACE_QUESTION;
+				result = peek(x, y);
+			}
+			else
+			{
+				result = "Invalid";
+			}
 		}
 		else
 		{
