@@ -1,0 +1,34 @@
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+blink {
+  animation: blink 600ms infinite;
+  color: #00FF00;
+}
+
+
+code {
+	display: block;	
+	}
+	
+#codeliketext {
+      max-width: 600px;
+}
+
+body {
+    background-color: #000000;
+    color: #00aa00;
+}
+
+#inputbox {
+    background-color: #00aa00;
+    color: #000000;
+    border: none;
+    caret-color: #00FF00;
+}

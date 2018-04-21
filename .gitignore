@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# backups
+*.*~
+*~
+
+# compiled java
+*.class
+
+
