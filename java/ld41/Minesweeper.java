@@ -123,7 +123,7 @@ public class Minesweeper
 	 */
     public String processCommand(String command, String values)
 	{
-		if (command.toLowerCase().equals("d"))
+		if (command.toLowerCase().equals(CMD_DEBUG))
 		{
 			return "debug(\'" + getUserGrid() + "\', \'" + getFullGrid() + "\').\n";
 		}
@@ -186,7 +186,7 @@ public class Minesweeper
 			}
 
 			return result;
-		} 
+		}
 	}
 	
 	/**
@@ -379,10 +379,11 @@ public class Minesweeper
 	 */
 	private String peek(int x, int y)
 	{
-		String s = "";
+		String s = "click([";
 		
 		for (int i = (x - 1); i < (x + 2); i++)
 		{
+			s += "[";
 			for (int j = (y - 1); j < (y + 2); j++)
 			{
 				if (i < 0 || j < 0 || i >= _userBoard.length || j >= _userBoard[0].length)
@@ -393,9 +394,20 @@ public class Minesweeper
 				{
 					s += _userBoard[i][j];
 				}
+				
+				if (j != y + 1)
+				{
+					s += ", ";
+				}
+			}
+			s += "]";
+			if (i != x + 1)
+			{
+				s += ", ";
 			}
 		}
 		
+		s += "]).\n";
 		return s;
 	}
 	
