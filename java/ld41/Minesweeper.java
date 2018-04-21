@@ -49,6 +49,8 @@ public class Minesweeper
 
     public String processCommand(String command, String values)
 	{
+		return "click([[x, x, x], [x, x, x], [x, x, x]]).\n";
+		/*
 		if (command.toLowerCase().equals("d"))
 		{
 			return getUserGrid() + "\n" + getFullGrid();
@@ -91,7 +93,7 @@ public class Minesweeper
 			}
 
 			return result;
-		}
+		} */
 	}
 
 	public String getUserGrid()

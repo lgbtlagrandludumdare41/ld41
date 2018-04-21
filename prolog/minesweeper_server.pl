@@ -46,7 +46,10 @@ go :-
 
 game_handler(_Request) :-
     reply_html_page(
-        code('MNSWPR'),
+        [title('MNSWPR'),
+         link([href('https://fonts.googleapis.com/css?family=IBM+Plex+Mono|VT323'), rel(stylesheet)], [])
+        ]
+        ,
         \minesweeper_page).
 
 minesweeper_page -->
@@ -56,15 +59,17 @@ minesweeper_page -->
            \html_requires(pengines_script),
            \html_requires(script),
            code(b('***************  MINE SWEEPER  ******************')),
-          code('CAPTAIN, WE\'VE SAILED INTO A MINEFIELD'),
-          code('LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT. NULLAM NISI EX, CONSECTETUR AC ALIQUAM EGET, PRAESENT VESTIBULUM VELIT ID VARIUS POSUERE. NULLAM SED COMMODO TORTOR. QUISQUE IMPERDIET ERAT NON DOLOR FACILISIS TINCIDUNT EGET SIT AMET LOREM. NAM PULVINAR IACULIS ERAT SED LUCTUS.'),
-          code('NULLA LOBORTIS NIBH MATTIS VELIT MATTIS, NEC CONDIMENTUM RISUS ELEIFEND.ETIAM MATTIS, QUAM ET SAGITTIS MOLLIS, MASSA URNA FAUCIBUS EX, EGET TEMPUS ODIO ELIT AT LACUS. DUIS BIBENDUM CURSUS ENIM VITAE SEMPER. CURABITUR LAOREET EST EU LUCTUS ALIQUAM.')
+          code('YOU ARE STANDING IN THE MIDDLE OF A LARGE MUDDY PLAIN.'),
+          code('THAT LAST SHELL MUST HAVE BEEN PRETTY CLOSE. YOU DON\'T REMEMBER HOW YOU GOT HERE.'),
+          code('OR WHY YOUR HEAD FEELS UNDERWATER'),
+          code('THERE IS A MARK IV MINE DETECTOR LAYING IN THE MUD HERE.'),
+          code('THERE IS A SCRAP OF PAPER STUCK TO THE MINE DETECTOR'),
+          code('TYPE HELP AND SEE IF THAT WORKS')
           ]),
           div(id(inputarea),
              [
-                  code('command(C,F, or ?) followed by a pair of numbers'),
                   label(for(user), blink('\u25b6')),
-                  input([type(text), name(user), id(inputbox)], [])
+                  input([type(text), name(user), id(inputbox), size(60)], [])
               ])
           ]).
 
