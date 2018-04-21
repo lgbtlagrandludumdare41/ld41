@@ -14,6 +14,14 @@ SWI-Prolog code in prolog
 
 Prolog runs a server on port 9870.
 
-When you http request root there, you get a session and start a game of minesweeper.
+When you http request / there, you get a page.
+
+Javascript on the page will create a pengine, and send a 'make_game' request.
+
+This forks a process, and remembers info about the process in the pengine's module.
+
+
+
+
 
 
