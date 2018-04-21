@@ -1,5 +1,6 @@
 :- module(game_interact,
-          [create_game/0]).
+          [create_game/0,
+          game_turn/2]).
 
 :- use_module(library(pengines)).
 
@@ -14,7 +15,7 @@ create_game :-
     pengine_self(PengineID),
     thread_at_exit(kill_game(PengineID)),
     process_create(
-        '../java/rungame.sh', [10,10], [
+        '../java/run.sh', [10,10], [
                             stdin(pipe(STDIN)),
                             stdout(pipe(STDOUT)),
                             stderr(pipe(STDOUT)),
@@ -36,3 +37,17 @@ kill_all_processes(PengineID) :-
 kill_game(PengineID) :-
     current_process(PengineID, PID, _, _),
     process_kill(PID).
+
+
+game_turn(Request, Response) :-
+    debug(ld(turn), 'turn ~w', [Request]),
+    pengine_self(PengineID),
+    current_process(PengineID, _PID, STDIN, STDOUT),
+    format(STDIN, 'C 4,4\n', []),
+    read_line_to_codes(STDOUT, X),
+    debug(ld(turn), 'rawout ~s', [X]),
+ %   read_term(STDOUT, Term, []),
+%    debug(ld(turn), 'resp ~q', [Term]),
+    Response = 'AHEAD OF YOU IS A PARTICULARLY MUDDY PATCH'.
+
+sandbox:safe_primitive(game_interact:game_turn(_, _)).

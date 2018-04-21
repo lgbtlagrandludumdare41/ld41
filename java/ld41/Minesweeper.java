@@ -123,7 +123,7 @@ public class Minesweeper
 	 */
     public String processCommand(String command, String values)
 	{
-		if (command.toLowerCase().equals(CMD_DEBUG))
+		if (command.toLowerCase().equals("d"))
 		{
 			return "debug(\'" + getUserGrid() + "\', \'" + getFullGrid() + "\').\n";
 		}
@@ -186,7 +186,7 @@ public class Minesweeper
 			}
 
 			return result;
-		}
+		} 
 	}
 	
 	/**

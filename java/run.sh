@@ -10,4 +10,4 @@ if [ "$2" != "" ]; then
 	height=$2
 fi
 
-java -jar Ld41.jar $width $height
+java -jar ../java/Ld41.jar $width $height
