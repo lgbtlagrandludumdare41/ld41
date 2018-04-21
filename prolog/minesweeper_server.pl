@@ -55,7 +55,7 @@ minesweeper_page -->
            \html_requires(jquery),
            \html_requires(pengines_script),
            \html_requires(script),
-           code('***************  MINE SWEEPER  ******************'),
+           code(b('***************  MINE SWEEPER  ******************')),
           code('CAPTAIN, WE\'VE SAILED INTO A MINEFIELD'),
           code('LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT. NULLAM NISI EX, CONSECTETUR AC ALIQUAM EGET, PRAESENT VESTIBULUM VELIT ID VARIUS POSUERE. NULLAM SED COMMODO TORTOR. QUISQUE IMPERDIET ERAT NON DOLOR FACILISIS TINCIDUNT EGET SIT AMET LOREM. NAM PULVINAR IACULIS ERAT SED LUCTUS.'),
           code('NULLA LOBORTIS NIBH MATTIS VELIT MATTIS, NEC CONDIMENTUM RISUS ELEIFEND.ETIAM MATTIS, QUAM ET SAGITTIS MOLLIS, MASSA URNA FAUCIBUS EX, EGET TEMPUS ODIO ELIT AT LACUS. DUIS BIBENDUM CURSUS ENIM VITAE SEMPER. CURABITUR LAOREET EST EU LUCTUS ALIQUAM.')
@@ -63,7 +63,7 @@ minesweeper_page -->
           div(id(inputarea),
              [
                   code('command(C,F, or ?) followed by a pair of numbers'),
-                  label(for(user), blink(&(gt))),
+                  label(for(user), blink('\u25b6')),
                   input([type(text), name(user), id(inputbox)], [])
               ])
           ]).

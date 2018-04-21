@@ -5,6 +5,7 @@
 
 :- dynamic current_process/4.
 
+create_game :- !.
 create_game :-
     pengine_self(PengineID),
     current_process(PengineID, _, _, _),
