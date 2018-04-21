@@ -35,4 +35,7 @@
 *.*~
 *~
 
+# compiled java
+*.class
+
 
