@@ -23,15 +23,26 @@ public class Ld41
 
 		if (args.length >= 1)
 		{
-			width = Integer.parseInt(args[0]);
+			try
+			{
+				width = Integer.parseInt(args[0]);
+			}
+			catch (Exception e)
+			{
+				// Leave width at the default
+			}
 		}
 		if (args.length >= 2)
 		{
-			height = Integer.parseInt(args[1]);
+			try
+			{
+				height = Integer.parseInt(args[1]);
+			}
+			catch (Exception e)
+			{
+				// Leave height at the default
+			}
 		}
-		
-		System.out.println("Width: " + width);
-		System.out.println("Height: " + height);
 
 		Minesweeper game = new Minesweeper(width, height);
 
@@ -39,17 +50,17 @@ public class Ld41
 		String s;
 		s = sc.nextLine();
 		while (!s.equals("exit") && !s.equals("quit")) // Just for testing purposes
+		{
+			try
 			{
-				try
-				{
-					String[] params = s.split(" ");
-					System.out.println(game.processCommand(params[0], params[1]));
-				}
-				catch (Exception e)
-				{
-					System.out.println("Invalid");
-				}
-				s = sc.nextLine();
+				String[] params = s.split(" ");
+				System.out.println(game.processCommand(params[0], params[1]));
 			}
+			catch (Exception e)
+			{
+				System.out.println("Invalid");
+			}
+			s = sc.nextLine();
 		}
+	}
 }
