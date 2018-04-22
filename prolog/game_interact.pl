@@ -3,6 +3,9 @@
           game_turn/2]).
 
 :- use_module(library(pengines)).
+:- use_module(describe).
+:- use_module(command).
+:- use_module(tokenize).
 
 :- dynamic current_process/4, current_location/3.
 
@@ -36,19 +39,22 @@ kill_all_processes(PengineID) :-
     setof(PID, current_process(PengineID, PID, _, _), PIDS),
     maplist(process_kill, PIDS).
 
-
 kill_game(PengineID) :-
     current_process(PengineID, PID, _, _),
     process_kill(PID).
 
+game_turn(RawRequest, Response) :-
+    debug(ld(turn), 'turn ~w', [RawRequest]),
+    tokenize(RawRequest, Request),
+    debug(ld(tokens), '~q', [Request]),
+    game_turn_(Request, Response).
 
-game_turn(Request, Response) :-
-    debug(ld(turn), 'turn ~w', [Request]),
+game_turn_(Request, Response) :-
     request_command(Request, Cmd),
     !,
     do_cmd(Cmd, Response).
-game_turn(Request, Response) :-
-    format(string(Response), 'I DONT KNOW HOW TO DO ~w', [Request]).
+game_turn_(Request, Response) :-
+    format(string(Response), 'I DONT KNOW HOW TO DO THAT', [Request]).
 
 do_cmd(Cmd, Response) :-
     pengine_self(PengineID),
@@ -60,15 +66,9 @@ do_cmd(Cmd, Response) :-
 %    debug(ld(turn), 'rawout ~s', [X]),
     read_term(STDOUT, Term, []),
     debug(ld(turn), 'resp ~q', [Term]),
-    term_string(Term, Response).
+    term_description(Term, ResponseStr),
+    !,
+    split_string(ResponseStr, "\n", "", SubStrs),
+    member(Response, SubStrs).
 
 sandbox:safe_primitive(game_interact:game_turn(_, _)).
-
-% succeed if we can find a valid command in this
-request_command(Request, Cmd) :-
-    text_to_string(Request, Str),
-    string_codes(Str, Codes),
-    phrase(cmd(Cmd), Codes).
-
-cmd('C 5,5') -->
-    "FIVE".
