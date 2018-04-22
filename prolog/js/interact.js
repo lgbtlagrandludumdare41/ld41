@@ -14,7 +14,7 @@ window.addEventListener('load', function() {
   	   }
   });
   mypen = new Pengine( {
-  	ask: "create_game",
+  	ask: "create_game(ResponseText)",
   	destroy: false,
   	oncreate: function(){
   		console.log("pengine created")
