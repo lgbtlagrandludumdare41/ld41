@@ -29,7 +29,7 @@ public class Minesweeper
 	
 	public static final String RESULT_INVALID = "invalid.";
 	public static final String RESULT_WIN = "win.";
-	public static final String RESULT_LOSE = "bomb.";
+	public static final String RESULT_LOSE = "lose.";
     
 	/// The board with the actual layout
     private char[][] _fullBoard;
