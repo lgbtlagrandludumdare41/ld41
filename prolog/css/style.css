@@ -38,6 +38,7 @@ blink {
 code {
 	display: block;
 	font-family: 'VT323', monospace;	
+	white-space: pre-line;
 	}
 	
 #codeliketext {
