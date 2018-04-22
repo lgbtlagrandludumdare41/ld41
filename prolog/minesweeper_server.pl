@@ -61,10 +61,16 @@ minesweeper_page -->
            code(b('***************  MINE SWEEPER  ******************')),
           code('YOU ARE STANDING IN THE MIDDLE OF A LARGE MUDDY PLAIN.'),
           code('THAT LAST SHELL MUST HAVE BEEN PRETTY CLOSE. YOU DON\'T REMEMBER HOW YOU GOT HERE.'),
-          code('OR WHY YOUR HEAD FEELS UNDERWATER'),
+          code('WHAT THAT LOUD BUZZING IS, OR WHY YOUR HEAD FEELS UNDERWATER'),
           code('THERE IS A MARK IV MINE DETECTOR LAYING IN THE MUD HERE.'),
-          code('THERE IS A SCRAP OF PAPER STUCK TO THE MINE DETECTOR'),
-          code('TYPE HELP AND SEE IF THAT WORKS')
+          code('TIED TO THE HANDLE OF THE MINESWEEPER IS A SCRAP OF PAPER THAT READS:'),
+          code('WANT TO MOVE?                              DIRECTION'),
+          code('THINK THERE\'S A MINE NEARBY? FLAG WITH    F DIRECTION'),
+          code('NOT SURE ABOUT A LOCATION?		   ? DIRECTION'),
+          code('WANT TO REMOVE A MARK?			   X DIRECTION'),
+          code('YOU CAN ONLY MOVE NORTH, SOUTH, EAST, AND WEST,'),
+          code('BUT OTHER ACTIONS CAN BE DONE DIAGONALLY.'),
+          code('YOU CAN\'T MARK A LOCATION THAT YOU\'VE ALREADY WALKED ON.')
           ]),
           div(id(inputarea),
              [

@@ -1,7 +1,8 @@
 :- module(game_interact,
           [create_game/1,
           game_turn/2,
-          player_will_move_to/3]).
+          player_will_move_to/3,
+          try_move_player_to/2]).
 
 :- use_module(library(pengines)).
 :- use_module(describe).
@@ -9,6 +10,8 @@
 :- use_module(game_tokenizer).
 
 :- dynamic current_process/4, current_location/3.
+
+board_size(10, 10).
 
 create_game('THE RAIN MAKES MUD PUDDLES') :-
     pengine_self(PengineID),
@@ -18,18 +21,22 @@ create_game('THE RAIN MAKES MUD PUDDLES') :-
 create_game(Response) :-
     pengine_self(PengineID),
     thread_at_exit(kill_game(PengineID)),
+    board_size(XSize, YSize),
     process_create(
-        '../java/run.sh', [10,10], [
+        '../java/run.sh', [XSize, YSize], [
                             stdin(pipe(STDIN)),
                             stdout(pipe(STDOUT)),
                             stderr(pipe(STDOUT)),
                             process(PID),
                             priority(1)
                         ]),
+    StartX is XSize // 2,
+    StartY is YSize // 2,
     asserta(current_process(PengineID, PID, STDIN, STDOUT)),
-    asserta(current_location(PengineID, 4, 4)),
+    asserta(current_location(PengineID, StartX, StartY)),
     sleep(2),
-    do_cmd('C 4,4', Response),
+    format(atom(InitCmd), 'c ~w,~w', [StartY, StartX]),   % Aaron does row, column
+    do_cmd(InitCmd, Response),
     debug(ld(create), 'game created ~w, ~w', [PengineID, PID]).
 
 :- multifile sandbox:safe_primitive/1.
@@ -67,7 +74,9 @@ do_cmd(Cmd, Response) :-
 %    debug(ld(turn), 'rawout ~s', [X]),
     read_term(STDOUT, Term, []),
     debug(ld(turn), 'resp ~q', [Term]),
-    term_description(Term, ResponseStr),
+    term_description(Term, ResponseStrX),
+    current_location(PengineID, MyX, MyY),
+    format(string(ResponseStr), '~w~n~w,~w', [ResponseStrX,MyX, MyY]),   % debug
     !,
     split_string(ResponseStr, "\n", "", SubStrs),
     member(Response, SubStrs).
@@ -90,3 +99,15 @@ player_will_move_to(Dir, X, Y) :-
                      ]),
     X is OldX + DX,
     Y is OldY + DY.
+
+try_move_player_to(X, Y) :-
+    board_size(BX, BY),
+    X >= 0,
+    X  < BX,
+    Y >= 0,
+    Y < BY,
+    pengine_self(ID),
+    retractall(current_location(ID, _, _)),
+    asserta(current_location(ID, X, Y))
+    .
+try_move_player_to(_,_).
