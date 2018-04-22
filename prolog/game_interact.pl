@@ -51,7 +51,8 @@ kill_game(PengineID) :-
     current_process(PengineID, PID, _, _),
     process_kill(PID).
 
-game_turn(RawRequest, Response) :-
+game_turn(URIRawRequest, Response) :-
+    www_form_encode(RawRequest, URIRawRequest),
     debug(ld(turn), 'turn ~w', [RawRequest]),
     tokenize(RawRequest, Request),
     debug(ld(tokens), '~q', [Request]),

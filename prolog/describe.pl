@@ -29,6 +29,62 @@ valid_td(click([[A,B,C],[D,E,F],[G,H,I]])) -->
     cell_desc(`TO THE SOUTHWEST `, G),
     cell_desc(`TO THE SOUTH `, H),
     cell_desc(`TO THE SOUTHEAST `, I).
+valid_td(invalid) -->
+    {   random_member( Desc,
+        [`YOU CAN'T DO THAT -- THERE'S A LARGE TREE IN THAT DIRECTION.`,
+         `YOU SEE A SWIRLING MASS OF MUD IN THAT DIRECTION. IT'S PROBABLY A BAD IDEA TO GO THAT WAY.`,
+         `YOU START TO STEP IN THAT DIRECTION WHEN A TENTACLE SUDDENLY RISES FROM THE MUD. YOU LEAP BACK IN SURPRISE.`
+        ])
+         },
+         Desc.
+valid_td(win) -->
+`                        . . .                         \n`,
+`                         \\|/                          \n`,
+`                       '--+--'                        \n`,
+`                         /|\\                          \n`,
+`                        ' | '                         \n`,
+`                          |                           \n`,
+`                          |                           \n`,
+`                      ,--'#'--.                       \n`,
+`                      |#######|                       \n`,
+`                   _.-'#######'-._                    \n`,
+`                ,-'###############'-.                 \n`,
+`              ,'#####################',               \n`,
+`             /#########################\\              \n`,
+`            |###########################|             \n`,
+`           |#############################|            \n`,
+`           |#############################|            \n`,
+`           |#############################|            \n`,
+`           |#############################|            \n`,
+`            |###########################|             \n`,
+`             \\#########################/              \n`,
+`              '.#####################,'               \n`,
+`                '._###############_,'                 \n`,
+`                   '--..#####..--'      \n`,
+`YOU BEAT THE MINEFIELD`
+.
+valid_td(lose) -->
+`                  _  /)\n`,
+`                 mo / )\n`,
+`                 |/)\\)\n`,
+`                  /\\_\n`,
+`                  \\__|=\n`,
+`                 (    )\n`,
+`                 __)(__\n`,
+`           _____/      \\\\_____\n`,
+`          |  _     ___   _   ||\n`,
+`          | | \\     |   | \\  ||\n`,
+`          | |  |    |   |  | ||\n`,
+`          | |_/     |   |_/  ||\n`,
+`          | | \\     |   |    ||\n`,
+`          | |  \\    |   |    ||\n`,
+`          | |   \\. _|_. | .  ||\n`,
+`          |                  ||\n`,
+`          |                  ||\n`,
+`          |                  ||\n`,
+`  *       | *   **    * **   |**      **\n`,
+`   \\))ejm97/.,(//,,..,,\\||(,,.,\\\\,.((//\n`
+.
 
 cell_desc(Dir, x) -->
     Dir,
