@@ -51,6 +51,7 @@ public class Ld41
 
 		Scanner sc = new Scanner(System.in);
 		
+		// Make a timer to exit the program if there's no input for 5 minutes.
 		long timeoutTime = 1000*60*5;
 		Timer t = new Timer();
 		t.schedule(new TimerTask(){
@@ -85,22 +86,3 @@ public class Ld41
 		}
 	}
 }
-
-//class TimeoutDetection implements Runnable
-//{
-//	private Thread th;
-//	private Timer timer;
-//
-//	public TimeoutDetection()
-//	{
-//		timer = new Timer();
-//		timer.schedule(task, time);
-//	}
-//	
-//	@Override
-//	public void run()
-//	{
-//		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//	}
-//	
-//}
