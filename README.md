@@ -84,6 +84,14 @@ For D, the response is
    
 note that those are back ticks.
 
+#### TODOS
+ * Prolog: Fix the hardcoded board size
+ * Prolog: Make sure everything the Java program splits out is handled correctly
+ * Prolog: If the user tries to perform an action on a spot off the board, display an appropriate message in response to the Java program returning 'invalid.' Some ideas:
+   * YOU CAN'T DO THAT -- THERE'S A LARGE TREE IN THAT DIRECTION.
+   * YOU SEE A SWIRLING MASS OF MUD IN THAT DIRECTION. IT'S PROBABLY A BAD IDEA TO GO THAT WAY.
+   * YOU START TO STEP IN THAT DIRECTION WHEN A TENTACLE SUDDENLY RISES FROM THE MUD. YOU LEAP BACK IN SURPRISE.
+
 
 	
 	
