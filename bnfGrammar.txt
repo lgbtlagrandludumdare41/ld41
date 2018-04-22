@@ -21,3 +21,16 @@ flag - place a flag at location around me given by direction
 question - mark location around me with a question mark
 remove - remove a ? or flag at location around me
 moving in a direction automatically clicks the spot you moved to
+
+
+User Reference (to be printed at the start of the game)
+
+TIED TO THE HANDLE OF THE MINESWEEPER IS A SCRAP OF PAPER THAT READS:
+WANT TO MOVE?					<direction>
+THINK THERE'S A MINE NEARBY?	f <direction>
+NOT SURE ABOUT A LOCATION?		? <direction>
+WANT TO REMOVE A MARK?			x <direction>
+
+YOU CAN ONLY MOVE NORTH, SOUTH, EAST, AND WEST, BUT OTHER ACTIONS CAN BE DONE DIAGONALLY.
+YOU CAN'T MARK A LOCATION THAT YOU'VE ALREADY WALKED ON.
+
