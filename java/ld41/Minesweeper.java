@@ -36,6 +36,10 @@ public class Minesweeper
 	/// The board the user sees
     private char[][] _userBoard;
 	
+	/// The player's (row, col) locations
+	private int playerRow;
+	private int playerCol;
+	
 	/** Default constructor. Just calls the other one with the default rows/cols
 	 * 
 	 */
@@ -98,6 +102,10 @@ public class Minesweeper
 			}
 			// Otherwise, don't do anything - just try again next iteration
 		}
+		
+		// Set the default player location
+		playerRow = Math.round(rows / 2);
+		playerCol = Math.round(cols / 2);
 	}
 	
 	/** Calculates the numbers for the board
@@ -177,6 +185,14 @@ public class Minesweeper
 				if (command.toLowerCase().equals(CMD_CLICK))
 				{
 					result = clickSquare(x, y);
+					
+					if (!result.equals(RESULT_LOSE) && !result.equals(RESULT_WIN))
+					{
+						// If the game isn't over, this command actually moves 
+						// the player, so update their location
+						playerRow = x;
+						playerCol = y;
+					}
 				}
 				else 
 				{
@@ -199,7 +215,9 @@ public class Minesweeper
 					}
 					else
 					{
-						result = peek(x, y);
+						// These commands don't move the player, so use the last
+						// saved location
+						result = peek(playerRow, playerCol);
 					}
 				}
 			}
