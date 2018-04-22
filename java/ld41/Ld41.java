@@ -13,30 +13,31 @@ import java.util.Scanner;
  */
 public class Ld41 
 {
-    /**
+    /** TODO: Setup watchdog to kill if no input for 5 minutes
      * @param args the command line arguments
      */
     public static void main(String[] args)
     {
-		int width = Minesweeper.DEFAULT_WIDTH_HEIGHT;
-		int height = Minesweeper.DEFAULT_WIDTH_HEIGHT;
+		int rows = Minesweeper.DEFAULT_ROWS_COLS;
+		int cols = Minesweeper.DEFAULT_ROWS_COLS;
 
+		// Try to read the rows and height.
 		if (args.length >= 1)
 		{
 			try
 			{
-				width = Integer.parseInt(args[0]);
+				rows = Integer.parseInt(args[0]);
 			}
 			catch (Exception e)
 			{
-				// Leave width at the default
+				// Leave rows at the default
 			}
 		}
 		if (args.length >= 2)
 		{
 			try
 			{
-				height = Integer.parseInt(args[1]);
+				cols = Integer.parseInt(args[1]);
 			}
 			catch (Exception e)
 			{
@@ -44,12 +45,11 @@ public class Ld41
 			}
 		}
 
-		Minesweeper game = new Minesweeper(width, height);
+		Minesweeper game = new Minesweeper(rows, cols);
 
 		Scanner sc = new Scanner(System.in);
-		String s;
-		s = sc.nextLine();
-		while (!s.equals("exit") && !s.equals("quit")) // Just for testing purposes
+		String s = sc.nextLine();
+		while (!s.equals("exit") && !s.equals("quit"))
 		{
 			try
 			{
@@ -58,7 +58,7 @@ public class Ld41
 			}
 			catch (Exception e)
 			{
-				System.out.println("Invalid");
+				System.out.println(Minesweeper.RESULT_INVALID);
 			}
 			s = sc.nextLine();
 		}
