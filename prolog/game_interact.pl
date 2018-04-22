@@ -1,11 +1,12 @@
 :- module(game_interact,
           [create_game/1,
-          game_turn/2]).
+          game_turn/2,
+          player_will_move_to/3]).
 
 :- use_module(library(pengines)).
 :- use_module(describe).
 :- use_module(command).
-:- use_module(tokenize).
+:- use_module(game_tokenizer).
 
 :- dynamic current_process/4, current_location/3.
 
@@ -72,3 +73,20 @@ do_cmd(Cmd, Response) :-
     member(Response, SubStrs).
 
 sandbox:safe_primitive(game_interact:game_turn(_, _)).
+
+% may return invalid coords
+player_will_move_to(Dir, X, Y) :-
+    pengine_self(ID),
+    current_location(ID, OldX, OldY),
+    memberchk(Dir-DX-DY, [
+                         n-0- -1,
+                         ne-1- -1,
+                         e-1-0,
+                         se-1-1,
+                         s-0-1,
+                         sw- -1-1,
+                         w- -1-0,
+                         nw- -1- -1
+                     ]),
+    X is OldX + DX,
+    Y is OldY + DY.
