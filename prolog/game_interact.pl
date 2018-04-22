@@ -75,9 +75,10 @@ do_cmd(Cmd, Response) :-
 %    debug(ld(turn), 'rawout ~s', [X]),
     read_term(STDOUT, Term, []),
     debug(ld(turn), 'resp ~q', [Term]),
-    term_description(Term, ResponseStrX),
-    current_location(PengineID, MyX, MyY),
-    format(string(ResponseStr), '~w~n~w,~w', [ResponseStrX,MyX, MyY]),   % debug
+    term_description(Term, ResponseStr),
+ %   current_location(PengineID, MyX, MyY),
+%    format(string(ResponseStr), '~w~n~w,~w', [ResponseStrX,MyX, MyY]),
+%    % debug
     !,
     split_string(ResponseStr, "\n", "", SubStrs),
     member(Response, SubStrs).

@@ -61,7 +61,8 @@ valid_td(win) -->
 `              '.#####################,'               \n`,
 `                '._###############_,'                 \n`,
 `                   '--..#####..--'      \n`,
-`YOU BEAT THE MINEFIELD`
+`YOU BEAT THE MINEFIELD`,
+    `RELOAD BROWSER TO REPLAY`
 .
 valid_td(lose) -->
 `                  _  /)\n`,
@@ -83,7 +84,8 @@ valid_td(lose) -->
 `          |                  ||\n`,
 `          |                  ||\n`,
 `  *       | *   **    * **   |**      **\n`,
-`   \\))ejm97/.,(//,,..,,\\||(,,.,\\\\,.((//\n`
+`   \\))ejm97/.,(//,,..,,\\||(,,.,\\\\,.((//\n`,
+    `RELOAD BROWSER TO REPLAY`
 .
 
 cell_desc(Dir, x) -->
