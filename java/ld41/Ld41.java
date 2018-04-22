@@ -84,5 +84,7 @@ public class Ld41
 			}
 			s = sc.nextLine();
 		}
+		
+		System.exit(0);
 	}
 }
