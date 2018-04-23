@@ -39,3 +39,7 @@
 *.class
 *.jar
 
+# logs
+httpd.log
+
+

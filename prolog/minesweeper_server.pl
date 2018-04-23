@@ -10,6 +10,7 @@
 :- use_module(library(http/http_parameters)).
 :- use_module(library(http/html_head)).
 :- use_module(library(http/http_files)).
+:- use_module(library(http/http_log)).
 :- use_module(library(pengines)).
 :- use_module(game_interact).
 

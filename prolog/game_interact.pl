@@ -8,6 +8,7 @@
 :- use_module(describe).
 :- use_module(command).
 :- use_module(game_tokenizer).
+:- use_module(library(http/http_log)).
 
 :- dynamic current_process/4, current_location/3.
 
@@ -37,7 +38,8 @@ create_game(Response) :-
     sleep(2),
     format(atom(InitCmd), 'c ~w,~w', [StartY, StartX]),   % Aaron does row, column
     do_cmd(InitCmd, Response),
-    debug(ld(create), 'game created ~w, ~w', [PengineID, PID]).
+    debug(ld(create), 'game created ~w, ~w', [PengineID, PID]),
+    http_log('game created ~w, ~w', [PengineID, PID]).
 
 :- multifile sandbox:safe_primitive/1.
 
@@ -56,7 +58,9 @@ game_turn(URIRawRequest, Response) :-
     debug(ld(turn), 'turn ~w', [RawRequest]),
     tokenize(RawRequest, Request),
     debug(ld(tokens), '~q', [Request]),
-    game_turn_(Request, Response).
+    game_turn_(Request, Response),
+    pengine_self(ID),
+    http_log('turn for ~w, ~w ~w~n', [ID, RawRequest, Response]). % note this is in nondet
 
 game_turn_(Request, Response) :-
     request_command(Request, Cmd),
