@@ -61,6 +61,7 @@ where X is one of (case sensitive)
    * b    bomb
    * *    invalid
    * ?    question_mark
+   * 1-9  number of nearby land minescell_
 
 or is 
 
@@ -83,23 +84,6 @@ For D, the response is
    debug(\`##########\`, \`xxxxxxxxxxxxxxxxx\`).\n
    
 note that those are back ticks.
-
-#### DONE
-Java program returning 'invalid.' Some ideas:
-   * YOU CAN'T DO THAT -- THERE'S A LARGE TREE IN THAT DIRECTION.
-   * YOU SEE A SWIRLING MASS OF MUD IN THAT DIRECTION. IT'S PROBABLY A BAD IDEA TO GO THAT WAY.
-   * YOU START TO STEP IN THAT DIRECTION WHEN A TENTACLE SUDDENLY RISES FROM THE MUD. YOU LEAP BACK IN SURPRISE.
-
-#### TODOS
- * Prolog: Fix the hardcoded board size
- * Prolog: Make sure everything the Java program splits out is handled correctly
- * Prolog: If the user tries to perform an action on a spot off the board, display an appropriate message in response to the 
- * Web:  scrolling window
- * Prolog: turn off debug
- * Testing: make sure we can handle some volume
- * Web: hide cursor until you get the create message
- * Testing: browser testing
- * Web: install burn in
 
 
 	

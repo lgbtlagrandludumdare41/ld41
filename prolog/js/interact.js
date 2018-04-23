@@ -2,13 +2,15 @@ var mypen = null;
 
 window.addEventListener('load', function() {
 	console.log("loaded");
+	$("#inputarea").removeClass("ready");
   const inputbox = document.getElementById('inputbox');
   inputbox.focus();
   inputbox.disabled = true;
   inputbox.addEventListener("keyup", function(ev) {
   	   if(ev.key == "Enter") {
   	   	console.log("saw return");
-  	      mypen.ask("game_turn('" + encodeURI(inputbox.value) + "', ResponseText)", [])
+  	      mypen.ask("game_turn('" + encodeURI(inputbox.value) + "', ResponseText)", []);
+  	      $("#inputarea").removeClass("ready");
   	   } else {
   	   	console.log(inputbox.innerHTML);
   	      inputbox.value = inputbox.value.toUpperCase();
@@ -34,6 +36,7 @@ window.addEventListener('load', function() {
   			 inputbox.value = ""
   			 inputbox.focus();
           inputbox.disabled = false;
+          $("#inputarea").addClass("ready");
   		}
   		if(this.more) {
   		    mypen.next();

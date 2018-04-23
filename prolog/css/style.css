@@ -70,3 +70,12 @@ input:focus {
 b {
  color: #00FF00;
  }
+ 
+#inputarea {
+      display: none;
+}
+
+
+#inputarea.ready {
+display: block;
+}

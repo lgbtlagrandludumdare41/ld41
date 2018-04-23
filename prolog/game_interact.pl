@@ -35,7 +35,7 @@ create_game(Response) :-
     StartY is YSize // 2,
     asserta(current_process(PengineID, PID, STDIN, STDOUT)),
     asserta(current_location(PengineID, StartX, StartY)),
-    sleep(2),
+    sleep(0.4),
     format(atom(InitCmd), 'c ~w,~w', [StartY, StartX]),   % Aaron does row, column
     do_cmd(InitCmd, Response),
     debug(ld(create), 'game created ~w, ~w', [PengineID, PID]),
